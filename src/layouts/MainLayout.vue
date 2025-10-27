@@ -4,10 +4,10 @@ import Topbar from '@/components/topbar/Topbar.vue'
 </script>
 
 <template>
-  <div class="flex bg-bg-secondary_subtle font-primary">
+  <div class="fixed inset-0 flex bg-bg-secondary_subtle font-primary">
     <Sidebar />
     <!--page render container-->
-    <div class="flex-1 p-6">
+    <div class="flex-1 overflow-y-auto p-6">
       <div class="rounded-2xl border border-border-primary bg-white">
         <Topbar />
         <div class="p-8">

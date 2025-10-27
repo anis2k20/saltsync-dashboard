@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ReferralCard from '@/components/referral/ReferralCard.vue'
+import CopyReferralLink from '@/components/referral/CopyReferralLink.vue'
 
 import { ref } from 'vue'
 import RewardPointCard from '@/components/referral/RewardPointCard.vue'
 import StateCard from '@/components/referral/StateCard.vue'
-import ReferralHistory from '@/components/referral/ReferralHistory.vue'
+import ReferralHistoryTable from '@/components/referral/ReferralHistoryTable.vue'
 
 const referralLink = ref('saltsync.com/EApVpttjlL3')
 
@@ -22,7 +22,7 @@ const stats = ref({
   <div class="space-y-6">
     <!--referral and reward section-->
     <div class="flex items-start gap-6">
-      <ReferralCard />
+      <CopyReferralLink />
       <div class="w-full space-y-6">
         <RewardPointCard />
 
@@ -38,7 +38,7 @@ const stats = ref({
 
     <!--referral history section-->
     <div>
-      <ReferralHistory />
+      <ReferralHistoryTable />
     </div>
   </div>
 </template>

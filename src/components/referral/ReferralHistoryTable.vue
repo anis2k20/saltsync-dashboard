@@ -59,7 +59,7 @@ const data = [
 </script>
 
 <template>
-  <div>
+  <div class="rounded-lg border border-border-primary p-xl">
     <h2 class="font-secondary text-2xl font-semibold text-primary-light">My Referral History</h2>
     <div class="flex items-start gap-2 py-base">
       <Search placeholder="Search" />
