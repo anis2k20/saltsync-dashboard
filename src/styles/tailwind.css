@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @import "./fonts.css";
+@import "./global.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -62,12 +63,4 @@
     --spacing-xl: 1rem ;
     --spacing-3xl: 1.5rem ;
 }
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
-}
 
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}

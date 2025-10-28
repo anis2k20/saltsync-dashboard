@@ -78,7 +78,7 @@ function switchToDarkMode() {
     <Transition name="fade">
       <footer>
         <div v-if="isOpen" class="space-y-[10px] p-4">
-          <div class="h-14 rounded-lg bg-primary-light px-base py-xx3 dark:bg-white">
+          <div class="h-16 rounded-lg bg-primary-light px-base py-xx3 dark:bg-white">
             <h3
               class="font-secondary font-semibold text-text-primary-light dark:text-text-placeholder"
             >

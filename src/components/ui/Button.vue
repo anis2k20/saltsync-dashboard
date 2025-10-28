@@ -21,7 +21,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
 
-const base = 'cursor-pointer rounded-lg  border font-medium flex items-center justify-center'
+const base = 'cursor-pointer rounded-lg    border font-normal flex items-center justify-center'
 
 const variantClasses = computed(() => {
   switch (props.variant) {

@@ -9,6 +9,7 @@ import { useToast } from 'vue-toastification'
 import { ref } from 'vue'
 
 const toast = useToast()
+const emit = defineEmits(['add-new-connection'])
 
 const referralLink = ref('saltsync.com/EApVpttjlL3')
 function copyLink() {
@@ -60,7 +61,9 @@ function copyLink() {
     </div>
 
     <!--action button-->
-    <Button class="w-full">Request for New Connection</Button>
+    <Button type="button" @click="emit('add-new-connection')" class="w-full"
+      >Request for New Connection</Button
+    >
   </div>
 </template>
 

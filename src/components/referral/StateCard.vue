@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  stat: {
+    type: Object,
+    default: () => ({}),
+  },
+})
+</script>
 
 <template>
   <div
@@ -16,12 +23,14 @@
     />
     <div class="relative z-10 flex w-full items-center gap-3">
       <div
-        class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-secondary/50"
-      ></div>
+        class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#BBD1F4]"
+      >
+        <component :is="stat.icon" class="h-6 w-6" />
+      </div>
       <div class="w-full space-y-2 text-text-quaternary-light">
-        <p class="text-md font-semibold">Reward Point</p>
+        <p class="text-md font-secondary font-semibold">{{ stat.label }}</p>
 
-        <h3 class="font-secondary text-4xl font-semibold text-primary-light">200</h3>
+        <h3 class="font-secondary text-4xl font-semibold text-primary-light">{{ stat.count }}</h3>
       </div>
     </div>
   </div>

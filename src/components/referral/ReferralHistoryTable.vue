@@ -5,10 +5,18 @@ import Badge from '@/components/ui/Badge.vue'
 import Pagination from '@/components/ui/Pagination.vue'
 import { storeToRefs } from 'pinia'
 import { useReferralStore } from '@/stores/referral.store'
+import CirclePlusIcon from '@/components/icons/circle-plus-icon.vue'
+import Button from '@/components/ui/Button.vue'
+import Loader from '@/components/ui/Loader.vue'
 
 const store = useReferralStore()
 const { list, meta, loading, error, search, status } = storeToRefs(store)
 const { fetchHistory, setPage } = store
+
+function pageChange(page: number) {
+  setPage(page)
+  fetchHistory()
+}
 
 onMounted(() => fetchHistory())
 
@@ -21,19 +29,28 @@ watch(status, () => fetchHistory())
     <h2 class="font-secondary text-2xl font-semibold text-primary-light">My Referral History</h2>
     <div class="flex items-start gap-2 py-base">
       <Search v-model="search" @search="fetchHistory" placeholder="Search" />
-      <select
-        v-model="status"
-        @change="fetchHistory"
-        class="flex h-10 items-center justify-center gap-2 rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray"
-      >
-        <option value="">All Status</option>
-        <option value="Success">Success</option>
-        <option value="Pending">Pending</option>
-        <option value="Rejected">Rejected</option>
-      </select>
+      <div class="relative">
+        <select
+          v-model="status"
+          @change="fetchHistory"
+          class="relative z-10 h-10 cursor-pointer appearance-none rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray outline-none"
+        >
+          <option value="Success">Success</option>
+          <option value="Pending">Pending</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <button
+          v-if="!status"
+          class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-2 bg-white text-fg-gray"
+        >
+          <circle-plus-icon /><span>Status</span>
+        </button>
+      </div>
     </div>
     <!-- Referral history table -->
-    <div class="overflow-hidden rounded-2xl border border-border-secondary">
+    <div
+      class="custom-scrollbar overflow-hidden overflow-x-auto rounded-2xl border border-border-secondary"
+    >
       <table class="w-full">
         <thead>
           <tr>
@@ -43,12 +60,14 @@ watch(status, () => fetchHistory())
             <th>Email</th>
             <th>Status</th>
             <th>Discount</th>
-            <th>point</th>
+            <th>Point</th>
           </tr>
         </thead>
         <tbody v-if="loading">
           <tr>
-            <td colspan="7" class="py-4 text-center">Loading...</td>
+            <td colspan="7" class="py-4 text-center">
+              <Loader />
+            </td>
           </tr>
         </tbody>
         <tbody v-else-if="error">
@@ -68,13 +87,13 @@ watch(status, () => fetchHistory())
             <td>{{ user.phone }}</td>
             <td>{{ user.email }}</td>
             <td><Badge :status="user.status" size="sm" /></td>
-            <td>{{ user.discount }}</td>
-            <td>{{ user.point }}</td>
+            <td>{{ user.discount ?? 'N/A' }}</td>
+            <td>{{ user.point ?? 'N/A' }}</td>
           </tr>
         </tbody>
       </table>
       <div v-if="!loading && !error && meta.total > 0">
-        <Pagination :model-value="{ meta }" @page-change="(setPage($event), fetchHistory())" />
+        <Pagination :model-value="{ meta }" @page-change="pageChange" />
       </div>
     </div>
   </div>
