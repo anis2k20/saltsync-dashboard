@@ -113,6 +113,7 @@ function switchToDarkMode() {
             </button>
           </div>
         </div>
+        <!--when sidebar collapsed-->
         <div v-else class="p-4">
           <button
             v-if="isDarkMode"
