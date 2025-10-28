@@ -5,43 +5,59 @@ import { ref } from 'vue'
 import RewardPointCard from '@/components/referral/RewardPointCard.vue'
 import StateCard from '@/components/referral/StateCard.vue'
 import ReferralHistoryTable from '@/components/referral/ReferralHistoryTable.vue'
+import GlobalDrawer from '@/components/referral/GlobalDrawer.vue'
+import ReferralForm from '@/components/referral/ReferralForm.vue'
+import Button from '@/components/ui/Button.vue'
+import shareIcon from '@/components/icons/share-icon.vue'
+import hourglassIcon from '@/components/icons/hourglass-icon.vue'
+import checkIcon from '@/components/icons/check-icon.vue'
+import xIcon from '@/components/icons/x-icon.vue'
 
 const referralLink = ref('saltsync.com/EApVpttjlL3')
 
-const stats = ref({
-  rewardPoints: 200,
-  rewardMax: 2000,
-  totalReferral: 20,
-  totalSuccess: 16,
-  totalPending: 4,
-  totalRejected: 0,
-})
+const stats = ref([
+  {
+    label: 'Total Referrals',
+    count: 20,
+    icon: shareIcon,
+  },
+  {
+    label: 'Total States',
+    count: 16,
+    icon: checkIcon,
+  },
+  { label: 'Total Pending', count: 4, icon: hourglassIcon },
+  { label: 'Total Referrals', count: 0, icon: xIcon },
+])
+const isDrawerOpen = ref(false)
 </script>
 
 <template>
-  <div class="space-y-6">
-    <!--referral and reward section-->
-    <div class="flex items-start gap-6">
-      <CopyReferralLink />
+  <div>
+    <div class="space-y-6">
+      <!--referral and reward section-->
+      <div class="flex items-start gap-6">
+        <CopyReferralLink @add-new-connection="isDrawerOpen = true" />
 
-      <!--point balance-->
-      <div class="w-full space-y-6">
-        <RewardPointCard />
+        <!--point balance-->
+        <div class="w-full space-y-6">
+          <RewardPointCard />
 
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-2 gap-6">
-          <StateCard />
-          <StateCard />
-          <StateCard />
-          <StateCard />
+          <!-- Stats Cards -->
+          <div class="grid grid-cols-2 gap-6">
+            <StateCard v-for="stat in stats" :stat />
+          </div>
         </div>
       </div>
-    </div>
 
-    <!--referral history section-->
-    <div>
-      <ReferralHistoryTable />
+      <!--referral history section-->
+      <div>
+        <ReferralHistoryTable />
+      </div>
     </div>
+    <GlobalDrawer v-model="isDrawerOpen" title="New Connection Referred" side="right" size="lg">
+      <ReferralForm />
+    </GlobalDrawer>
   </div>
 </template>
 
