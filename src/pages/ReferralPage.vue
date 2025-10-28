@@ -23,6 +23,8 @@ const stats = ref({
     <!--referral and reward section-->
     <div class="flex items-start gap-6">
       <CopyReferralLink />
+
+      <!--point balance-->
       <div class="w-full space-y-6">
         <RewardPointCard />
 

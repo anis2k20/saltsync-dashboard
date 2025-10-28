@@ -38,7 +38,7 @@ const visiblePages = computed(() => {
   return Array.from({ length: end - start + 1 }, (_, i) => start + i)
 })
 
-defineEmits(['pageChange'])
+const emit = defineEmits(['pageChange'])
 
 const prevPage = computed(() => {
   return meta.value?.current_page - 1
@@ -49,24 +49,7 @@ const nextPage = computed(() => {
 })
 
 function changePage(page) {
-  let params = {}
-
-  if (page) {
-    params.page = page
-  }
-  let path = meta.value?.path
-
-  // if (window.location.protocol === "https:") {
-  path = path.replace('http:', 'https:')
-  // }
-
-  axios
-    .get(path, {
-      params,
-    })
-    .then((res) => {
-      models.value = res.data
-    })
+  emit('pageChange', page)
 }
 </script>
 
@@ -117,10 +100,9 @@ function changePage(page) {
         <li
           v-for="page in visiblePages"
           :class="{
-            'flex h-9 w-9 items-center justify-center border-blue-500 bg-blue-500 text-white hover:text-white':
-              meta?.current_page == page,
+            'bg-blue-500 text-white hover:text-white': meta?.current_page === page,
           }"
-          class="cursor-pointer rounded border hover:border hover:border-blue-500 hover:text-blue-500 md:px-4"
+          class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-border-primary hover:border hover:text-blue-500 md:px-4"
           @click="changePage(page)"
         >
           {{ page }}

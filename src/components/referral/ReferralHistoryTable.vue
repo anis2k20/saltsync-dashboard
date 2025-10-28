@@ -1,73 +1,36 @@
 <script setup lang="ts">
+import { onMounted, watch } from 'vue'
 import Search from '@/components/ui/Search.vue'
-import CirclePlusIcon from '@/components/icons/circle-plus-icon.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Pagination from '@/components/ui/Pagination.vue'
+import { storeToRefs } from 'pinia'
+import { useReferralStore } from '@/stores/referral.store'
 
-const data = [
-  {
-    id: 1,
-    date: '29 January, 2019',
-    name: 'Forhad Sheikh',
-    phone: '(270) 555-0117',
-    email: 'nathan@gmail.com',
-    status: 'Success',
-    discount: 200,
-    point: 200,
-  },
-  {
-    id: 2,
-    date: '29 January, 2019',
-    name: 'Forhad Sheikh',
-    phone: '(603) 555-0123',
-    email: null,
-    status: 'Pending',
-    discount: null,
-    point: null,
-  },
-  {
-    id: 3,
-    date: '29 January, 2019',
-    name: 'Forhad Sheikh',
-    phone: '(671) 555-0110',
-    email: 'jessica@gmail.com',
-    status: 'Rejected',
-    discount: null,
-    point: null,
-  },
-  {
-    id: 4,
-    date: '29 January, 2019',
-    name: 'Forhad Sheikh',
-    phone: '(225) 555-0118',
-    email: 'tanya@gmail.com',
-    status: 'Success',
-    discount: 10,
-    point: 100,
-  },
-  {
-    id: 5,
-    date: '29 January, 2019',
-    name: 'Forhad Sheikh',
-    phone: '(302) 555-0107',
-    email: null,
-    status: 'Success',
-    discount: 10,
-    point: 100,
-  },
-]
+const store = useReferralStore()
+const { list, meta, loading, error, search, status } = storeToRefs(store)
+const { fetchHistory, setPage } = store
+
+onMounted(() => fetchHistory())
+
+watch(search, () => fetchHistory())
+watch(status, () => fetchHistory())
 </script>
 
 <template>
   <div class="rounded-lg border border-border-primary p-xl">
     <h2 class="font-secondary text-2xl font-semibold text-primary-light">My Referral History</h2>
     <div class="flex items-start gap-2 py-base">
-      <Search placeholder="Search" />
-      <button
-        class="flex h-10 items-center justify-center gap-2 rounded-md border border-dashed border-border-primary px-3 py-2 text-fg-gray"
+      <Search v-model="search" @search="fetchHistory" placeholder="Search" />
+      <select
+        v-model="status"
+        @change="fetchHistory"
+        class="flex h-10 items-center justify-center gap-2 rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray"
       >
-        <circle-plus-icon /><span>Status</span>
-      </button>
+        <option value="">All Status</option>
+        <option value="Success">Success</option>
+        <option value="Pending">Pending</option>
+        <option value="Rejected">Rejected</option>
+      </select>
     </div>
     <!-- Referral history table -->
     <div class="overflow-hidden rounded-2xl border border-border-secondary">
@@ -83,8 +46,23 @@ const data = [
             <th>point</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="user in data">
+        <tbody v-if="loading">
+          <tr>
+            <td colspan="7" class="py-4 text-center">Loading...</td>
+          </tr>
+        </tbody>
+        <tbody v-else-if="error">
+          <tr>
+            <td colspan="7" class="py-4 text-center text-red-500">{{ error }}</td>
+          </tr>
+        </tbody>
+        <tbody v-else-if="list.length === 0">
+          <tr>
+            <td colspan="7" class="py-4 text-center">No referrals found.</td>
+          </tr>
+        </tbody>
+        <tbody v-else>
+          <tr v-for="user in list" :key="user.id">
             <td>{{ user.date }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.phone }}</td>
@@ -95,8 +73,8 @@ const data = [
           </tr>
         </tbody>
       </table>
-      <div>
-        <Pagination :model-value="data" />
+      <div v-if="!loading && !error && meta.total > 0">
+        <Pagination :model-value="{ meta }" @page-change="(setPage($event), fetchHistory())" />
       </div>
     </div>
   </div>
