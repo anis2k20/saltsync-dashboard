@@ -5,7 +5,9 @@ import BellIcon from '@/components/icons/bell-icon.vue'
 </script>
 
 <template>
-  <nav class="flex items-center justify-between border-b border-border-tertiary px-3xl py-base">
+  <nav
+    class="flex items-center justify-between border-b border-border-tertiary px-3xl py-base dark:border-border-primary-dark"
+  >
     <Search
       placeholder="Type a command or search..."
       class="placeholder:text-text-placeholder-light"

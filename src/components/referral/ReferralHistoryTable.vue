@@ -27,9 +27,15 @@ watch(status, () => fetchHistory())
 </script>
 
 <template>
-  <div class="space-y-2 rounded-lg border border-border-primary p-xl">
+  <div
+    class="space-y-2 rounded-lg border border-border-primary p-xl dark:border-border-primary-dark"
+  >
     <div class="flex items-center justify-between">
-      <h2 class="font-secondary text-2xl font-semibold text-primary-light">My Referral History</h2>
+      <h2
+        class="font-secondary text-2xl font-semibold text-primary-light dark:text-text-primary-dark"
+      >
+        My Referral History
+      </h2>
     </div>
     <div class="flex flex-wrap items-center justify-between">
       <div class="flex items-start gap-2 py-base">
@@ -38,7 +44,7 @@ watch(status, () => fetchHistory())
           <select
             v-model="status"
             @change="fetchHistory"
-            class="relative z-10 h-10 cursor-pointer appearance-none rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray outline-none"
+            class="relative z-10 h-10 cursor-pointer appearance-none rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray outline-none dark:border-border-secondary-dark"
           >
             <option value="Success">Success</option>
             <option value="Pending">Pending</option>
@@ -46,7 +52,7 @@ watch(status, () => fetchHistory())
           </select>
           <button
             v-if="!status"
-            class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-2 bg-white text-fg-gray"
+            class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-2 text-fg-gray dark:text-text-primary-dark"
           >
             <circle-plus-icon /><span>Status</span>
           </button>
@@ -58,7 +64,7 @@ watch(status, () => fetchHistory())
     </div>
     <!-- Referral history table -->
     <div
-      class="custom-scrollbar overflow-hidden overflow-x-auto rounded-2xl border border-border-secondary"
+      class="overflow-hidden overflow-x-auto rounded-2xl border border-border-secondary dark:border-border-primary-dark"
     >
       <table class="w-full">
         <thead>
@@ -111,12 +117,12 @@ watch(status, () => fetchHistory())
 <style scoped>
 @reference '@/styles/tailwind.css';
 tr {
-  @apply cursor-pointer hover:bg-bg-secondary-light;
+  @apply cursor-pointer hover:bg-bg-secondary-light hover:dark:bg-secondary-dark;
 }
 th {
-  @apply border-b border-border-secondary bg-bg-secondary-light px-3xl py-lg text-left font-secondary text-sm font-semibold text-primary-light;
+  @apply border-b border-border-secondary bg-bg-secondary-light px-3xl py-lg text-left font-secondary text-sm font-semibold text-primary-light dark:border-border-primary-dark dark:bg-secondary-dark dark:text-text-primary-dark;
 }
 td {
-  @apply border-b border-border-secondary px-3xl py-xl text-sm font-medium text-nowrap text-primary-light;
+  @apply border-b border-border-secondary px-3xl py-xl text-sm font-medium text-nowrap text-primary-light dark:border-border-primary-dark dark:text-text-primary-dark;
 }
 </style>

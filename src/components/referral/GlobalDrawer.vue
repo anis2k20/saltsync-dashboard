@@ -84,7 +84,7 @@ const sizeClass = computed(() => {
     case 'md':
       return base + (props.side === 'bottom' ? ' h-1/3' : ' w-80')
     case 'lg':
-      return base + (props.side === 'bottom' ? ' h-1/2' : ' w-[510px]')
+      return base + (props.side === 'bottom' ? ' h-1/2' : 'w-full md:w-[510px]')
     case 'xl':
       return base + (props.side === 'bottom' ? ' h-2/3' : ' w-[480px]')
     default:

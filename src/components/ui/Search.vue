@@ -26,7 +26,7 @@ function onSubmit(e: Event) {
       v-bind="$attrs"
       :value="props.modelValue"
       @input="onInput"
-      class="placeholder:text-text-placeholder-light h-10 rounded-lg border border-border-primary px-3 py-2.5 text-sm outline-none"
+      class="placeholder:text-text-placeholder-light h-10 rounded-lg border border-border-primary px-3 py-2.5 text-sm outline-none dark:border-border-secondary-dark dark:placeholder:text-text-placeholdder-dark"
     />
   </form>
 </template>
