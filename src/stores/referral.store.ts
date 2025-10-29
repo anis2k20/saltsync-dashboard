@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { api } from '@/services/api.service'
 import type { PostReferralDTO, Referral } from '@/types'
 
@@ -11,7 +11,15 @@ export const useReferralStore = defineStore('referral', () => {
   const search = ref('')
   const status = ref<string | null>(null)
 
-  async function fetchHistory(opts = {}) {
+  function debounce(func: Function, delay: number) {
+    let timeoutId: number | undefined
+    return (...args: any[]) => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => func.apply(null, args), delay)
+    }
+  }
+
+  async function fetchHistory() {
     loading.value = true
     error.value = null
     try {
@@ -29,6 +37,10 @@ export const useReferralStore = defineStore('referral', () => {
       loading.value = false
     }
   }
+
+  const debouncedFetchHistory = debounce(fetchHistory, 300)
+
+  watch([search, status], debouncedFetchHistory)
 
   async function addReferral(payload: PostReferralDTO) {
     loading.value = true

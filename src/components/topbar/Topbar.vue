@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Search from '@/components/ui/Search.vue'
 import MessageIcon from '@/components/icons/message-icon.vue'
-import BellIcon from '@/components/icons/bell-icon.vue'
+import BellIcon from '@/components/icons/bell.vue'
 import DownIcon from '@/components/icons/down-icon.vue'
 </script>
 

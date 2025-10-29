@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="flex h-96 w-full items-center justify-center">
+  <div class="flex h-[585px] w-full items-center justify-center">
     <div class="flex flex-col items-center justify-center gap-3 text-fg-gray">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16">
         <path
