@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import Search from '@/components/ui/Search.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Pagination from '@/components/ui/Pagination.vue'
@@ -14,8 +14,14 @@ const store = useReferralStore()
 const { list, meta, loading, error, search, status } = storeToRefs(store)
 const { fetchHistory, setPage } = store
 
-const emit = defineEmits<{ (e: 'add-referral'): void }>()
-
+function formatDate(dateString: string) {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  })
+}
 function pageChange(page: number) {
   setPage(page)
   fetchHistory()
@@ -100,7 +106,7 @@ watch(status, () => fetchHistory())
         </tbody>
         <tbody v-else>
           <tr v-for="user in list" :key="user.id">
-            <td>{{ user.date }}</td>
+            <td>{{ formatDate(user.date) }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.phone }}</td>
             <td>{{ user.email }}</td>
