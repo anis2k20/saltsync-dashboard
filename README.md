@@ -40,3 +40,23 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Environment Variables
+
+This project uses environment variables to control mock behavior and API switching.
+
+Create a `.env` file in the root directory with the following variables:
+
+- `VITE_MOCK_LATENCY=false` - Disable random latency in mock API calls (default: enabled with 300-800ms delay)
+- `VITE_MOCK_ERROR=true` - Enable random errors in mock API calls (20% chance of 500 error, default: disabled)
+- `VITE_USE_REAL_API=true` - Switch to real API endpoints (default: false, uses mock data)
+
+Example `.env` file:
+
+```
+VITE_MOCK_LATENCY=false
+VITE_MOCK_ERROR=false
+VITE_USE_REAL_API=false
+```
+
+Note: When `VITE_USE_REAL_API=true`, the real API calls are not yet implemented and will throw an error. Update the API service in `src/services/api.service.ts` to integrate with your actual backend.

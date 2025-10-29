@@ -8,17 +8,38 @@ let nextId = referrals.length + 1
 let points: Points = { current: 120, lifetime: 420 }
 
 function delay() {
+  if (import.meta.env.VITE_MOCK_LATENCY === 'false') return Promise.resolve()
   return new Promise((res) => setTimeout(res, Math.floor(Math.random() * (MAX - MIN)) + MIN))
+}
+
+function maybeThrowError() {
+  if (import.meta.env.VITE_MOCK_ERROR === 'true') {
+    if (Math.random() > 0.8) {
+      const err: any = new Error('Mock error')
+      err.status = 500
+      throw err
+    }
+  }
 }
 
 export const api = {
   async getMyProfile() {
     await delay()
+    maybeThrowError()
+    if (import.meta.env.VITE_USE_REAL_API === 'true') {
+      // TODO: Implement real API call
+      throw new Error('Real API not implemented')
+    }
     return { id: 1, name: 'You', referralCode: 'EApVpt1jL3' }
   },
 
   async getPoints() {
     await delay()
+    maybeThrowError()
+    if (import.meta.env.VITE_USE_REAL_API === 'true') {
+      // TODO: Implement real API call
+      throw new Error('Real API not implemented')
+    }
     return { ...points }
   },
 
@@ -34,6 +55,11 @@ export const api = {
     status?: string
   }) {
     await delay()
+    maybeThrowError()
+    if (import.meta.env.VITE_USE_REAL_API === 'true') {
+      // TODO: Implement real API call
+      throw new Error('Real API not implemented')
+    }
     let items = [...referrals]
 
     if (q) {
@@ -56,6 +82,11 @@ export const api = {
 
   async postManual(payload: PostReferralDTO) {
     await delay()
+    maybeThrowError()
+    if (import.meta.env.VITE_USE_REAL_API === 'true') {
+      // TODO: Implement real API call
+      throw new Error('Real API not implemented')
+    }
     const exists = referrals.some((r) => r.email?.toLowerCase() === payload.email.toLowerCase())
     if (exists) {
       const err: any = new Error('Duplicate email')
