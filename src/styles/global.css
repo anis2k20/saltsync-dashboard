@@ -1,3 +1,6 @@
+:root {
+    --alphalight300: rgba(0, 93, 93, 0.24);
+}
 @layer utilities {
     .custom-scrollbar::-webkit-scrollbar {
         width: 8px;

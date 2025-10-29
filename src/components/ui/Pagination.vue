@@ -66,7 +66,7 @@ function changePage(page) {
           'pointer-events-none': prevPage < 1,
           'cursor-pointer': prevPage > 1,
         }"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-primary text-fg-gray"
+        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-primary text-fg-gray dark:border-border-primary-dark dark:text-text-placeholdder-dark"
         @click="changePage(1)"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -81,7 +81,7 @@ function changePage(page) {
           'pointer-events-none': prevPage < 1,
           'cursor-pointer': prevPage > 1,
         }"
-        class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-border-primary text-fg-gray"
+        class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-border-primary text-fg-gray dark:border-border-primary-dark dark:text-text-placeholdder-dark"
         @click="changePage(prevPage)"
       >
         <svg height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
@@ -100,9 +100,10 @@ function changePage(page) {
         <li
           v-for="page in visiblePages"
           :class="{
-            'bg-blue-500 text-white hover:text-white': meta?.current_page === page,
+            'bg-brand-solid text-white hover:text-white dark:text-white':
+              meta?.current_page === page,
           }"
-          class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-border-primary hover:border hover:text-blue-500 md:px-4"
+          class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-border-primary hover:border hover:text-blue-500 md:px-4 dark:border-border-primary-dark dark:text-text-placeholdder-dark"
           @click="changePage(page)"
         >
           {{ page }}
@@ -114,7 +115,7 @@ function changePage(page) {
           'pointer-events-none': nextPage > totalPages,
           'cursor-pointer': nextPage < totalPages,
         }"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-primary text-fg-gray"
+        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-primary text-fg-gray dark:border-border-primary-dark dark:text-text-placeholdder-dark"
         @click="changePage(nextPage)"
       >
         <svg height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +134,7 @@ function changePage(page) {
           'pointer-events-none': nextPage > totalPages,
           'cursor-pointer': nextPage < totalPages,
         }"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-primary text-fg-gray"
+        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-primary text-fg-gray dark:border-border-primary-dark dark:text-text-placeholdder-dark"
         @click="changePage(meta?.last_page)"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">

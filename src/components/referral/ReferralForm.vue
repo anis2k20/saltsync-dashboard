@@ -48,9 +48,9 @@ function cancel() {
 </script>
 <template>
   <form @submit.prevent="onSubmit" class="space-y-4">
-    <InputField v-model="name" label="Name *" type="email" required />
-    <InputField v-model="email" label="Email *" type="email" required />
-    <InputField v-model="phone" label="Phone (Optional)" type="email" />
+    <InputField v-model="name" label="Name *" type="email" placeholder="Name" required />
+    <InputField v-model="email" label="Email *" type="email" placeholder="Email" required />
+    <InputField v-model="phone" label="Phone (Optional)" type="tel" placeholder="Phone" />
     <div class="flex gap-2">
       <Button
         @click="onSubmit"

@@ -41,6 +41,7 @@
     --color-text-primary-dark: #F8FAFC;
     --color-text-secondary-dark: #CBD5E1;
     --color-text-quaternary-light: #64748B;
+    --color-text-quaternary-dark: #94A3B8;
 
     --color-text-placeholder: #1E293B;
     --color-text-placeholdder-light: #64748B;
@@ -68,4 +69,5 @@
     --spacing-xl: 1rem ;
     --spacing-3xl: 1.5rem ;
 }
+
 

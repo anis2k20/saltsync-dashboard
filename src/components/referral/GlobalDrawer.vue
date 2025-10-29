@@ -1,7 +1,11 @@
 <template>
   <!-- Background overlay -->
   <transition name="fade">
-    <div v-if="modelValue" class="fixed inset-0 z-40 bg-[#020617B2]/70" @click="close"></div>
+    <div
+      v-if="modelValue"
+      class="fixed inset-0 z-40 bg-[#020617B2]/70 dark:bg-white/60"
+      @click="close"
+    ></div>
   </transition>
 
   <!-- Drawer panel -->
@@ -9,7 +13,7 @@
     <aside
       v-if="modelValue"
       :class="[
-        'fixed z-50 flex flex-col space-y-10 overflow-hidden bg-white px-10 py-6 shadow-2xl transition-all',
+        'fixed z-50 flex flex-col space-y-10 overflow-hidden bg-white px-10 py-6 shadow-2xl transition-all dark:bg-primary-dark',
         sideClass,
         sizeClass,
       ]"
@@ -24,10 +28,14 @@
       />
       <!-- Header -->
       <header class="relative z-10 flex items-center justify-between dark:border-slate-800">
-        <h2 class="font-secondary text-2xl font-semibold text-primary-light">{{ title }}</h2>
+        <h2
+          class="font-secondary text-2xl font-semibold text-primary-light dark:text-text-primary-dark"
+        >
+          {{ title }}
+        </h2>
         <button
           @click="close"
-          class="h-8 w-8 cursor-pointer rounded-full bg-[#FEF2F2] font-semibold text-[#EF4444] transition-colors duration-200 hover:bg-[#EF4444] hover:text-[#FEF2F2]"
+          class="h-8 w-8 cursor-pointer rounded-full bg-[#FEF2F2] font-semibold text-[#EF4444] transition-colors duration-200 hover:bg-[#EF4444] hover:text-[#FEF2F2] dark:bg-[#450A0A]"
           aria-label="Close drawer"
         >
           ✕

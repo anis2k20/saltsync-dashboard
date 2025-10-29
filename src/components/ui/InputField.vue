@@ -26,14 +26,14 @@ function validate() {
 
 <template>
   <div class="input-field">
-    <label v-if="props.label" class="block text-sm font-medium text-[#020617]">
+    <label v-if="props.label" class="block text-sm font-medium text-[#020617] dark:text-[#F8FAFC]">
       {{ props.label }}
     </label>
     <input
       :placeholder="props.placeholder"
       v-model="inputValue"
       @blur="validate"
-      class="mt-2 block w-full rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 outline-none focus:border-brand-pirmary sm:text-sm"
+      class="mt-2 block w-full rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 outline-none placeholder:text-text-placeholdder-light focus:border-brand-pirmary sm:text-sm dark:border-[#334155] dark:bg-[#020617] dark:text-text-placeholdder-dark dark:placeholder:text-shadow-text-placeholdder-dark"
     />
     <p v-if="isInvalid" class="mt-2 text-xs text-red-600">This field is required.</p>
   </div>

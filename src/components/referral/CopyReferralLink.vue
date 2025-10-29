@@ -7,6 +7,7 @@ import WhatsappIcon from '@/components/icons/whatsapp-icon.vue'
 import CopyIcon from '@/components/icons/copy-icon.vue'
 import { useToast } from 'vue-toastification'
 import { ref } from 'vue'
+import InputField from '@/components/ui/InputField.vue'
 
 const toast = useToast()
 const emit = defineEmits(['add-new-connection'])
@@ -20,7 +21,7 @@ function copyLink() {
 
 <template>
   <div
-    class="relative max-w-96 space-y-6 overflow-hidden rounded-2xl bg-bg-brand-primary p-3xl text-white md:space-y-8"
+    class="relative max-w-96 space-y-6 overflow-hidden rounded-2xl bg-bg-brand-primary p-3xl text-white md:space-y-8 dark:bg-primary-light"
   >
     <img
       src="../../assets/images/gradient-small-1.svg"
@@ -36,7 +37,11 @@ function copyLink() {
     <div class="relative z-10">
       <h6 class="pb-1 text-sm">Your referral invite link</h6>
       <div class="flex gap-2">
-        <Search v-model="referralLink" class="w-full placeholder:text-white" />
+        <input
+          type="text"
+          :value="referralLink"
+          class="rounded-lg border border-border-primary pl-2 outline-none placeholder:text-white"
+        />
         <Button class="border border-white bg-white text-text-secondary-light" @click="copyLink"
           ><copy-icon class="mr-2" />Copy</Button
         >

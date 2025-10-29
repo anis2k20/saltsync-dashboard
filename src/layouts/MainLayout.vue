@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Sidebar from '@/components/sidebar/Sidebar.vue'
 import Topbar from '@/components/topbar/Topbar.vue'
+import MobileBaottomNav from '@/components/bottom-nav/MobileBaottomNav.vue'
 </script>
 
 <template>
@@ -20,6 +21,8 @@ import Topbar from '@/components/topbar/Topbar.vue'
       </div>
     </div>
     <!--end page render container-->
+    <!--mobile bottom nav-->
+    <MobileBaottomNav />
   </div>
 </template>
 

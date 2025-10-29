@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SearchIcon from '@/components/icons/search-icon.vue'
+
 const props = withDefaults(defineProps<{ modelValue?: string }>(), {
   modelValue: '',
 })
@@ -20,14 +22,15 @@ function onSubmit(e: Event) {
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit" class="relative">
     <input
       type="text"
       v-bind="$attrs"
       :value="props.modelValue"
       @input="onInput"
-      class="placeholder:text-text-placeholder-light h-10 rounded-lg border border-border-primary px-3 py-2.5 text-sm outline-none dark:border-border-secondary-dark dark:placeholder:text-text-placeholdder-dark"
+      class="placeholder:text-text-placeholder-light h-10 rounded-lg border border-border-primary px-3 py-2.5 pl-7 text-sm outline-none focus:border-brand-solid dark:border-border-secondary-dark dark:text-text-placeholdder-dark dark:text-shadow-text-placeholdder-dark dark:placeholder:text-text-placeholdder-dark"
     />
+    <search-icon class="absolute top-1/2 left-2 -translate-y-1/2 dark:text-[#E2E8F0]" />
   </form>
 </template>
 

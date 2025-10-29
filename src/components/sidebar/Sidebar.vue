@@ -27,14 +27,14 @@ function switchToDarkMode() {
 <template>
   <aside
     :class="[
-      'relative z-10 hidden h-screen flex-col justify-between bg-secondary-light transition-all duration-200 ease-in md:flex dark:bg-secondary-dark',
+      'relative z-10 hidden h-screen flex-col justify-between bg-secondary-light transition-all duration-200 ease-in lg:flex dark:bg-secondary-dark',
       isOpen ? 'w-60' : 'w-20',
     ]"
   >
     <img
       src="../../assets/images/sidebar-gradient.svg"
       alt="gradient"
-      class="absolute top-0 z-0 h-[480px] w-full rotate-[8.6] opacity-80"
+      class="absolute top-0 z-0 h-[480px] w-full rotate-[8.6] blur-sm"
     />
     <div>
       <!--header-->

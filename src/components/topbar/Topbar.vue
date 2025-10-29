@@ -2,6 +2,7 @@
 import Search from '@/components/ui/Search.vue'
 import MessageIcon from '@/components/icons/message-icon.vue'
 import BellIcon from '@/components/icons/bell-icon.vue'
+import DownIcon from '@/components/icons/down-icon.vue'
 </script>
 
 <template>
@@ -15,15 +16,22 @@ import BellIcon from '@/components/icons/bell-icon.vue'
     <!--profile info-->
     <div class="flex items-center gap-4">
       <div
-        class="flex h-10 items-center gap-2.5 rounded-md bg-secondary-light px-2.5 py-1 text-fg-gray"
+        class="flex h-10 items-center gap-2.5 rounded-md bg-secondary-light px-2.5 py-1 text-fg-gray dark:bg-bg-secondary_subtle-dark dark:text-text-placeholdder-dark"
       >
         <message-icon />
         <bell-icon />
       </div>
 
       <div
-        class="flex h-10 w-10 items-center rounded-md bg-secondary-light px-2.5 py-1 text-fg-gray"
-      ></div>
+        class="flex h-10 items-center gap-1.5 rounded-md bg-secondary-light px-2.5 py-1 text-fg-gray dark:bg-bg-secondary_subtle-dark dark:text-text-placeholdder-dark"
+      >
+        <img
+          src="@/assets/images/user.webp"
+          alt="user-photo"
+          class="h-8 w-8 rounded-full object-cover"
+        />
+        <down-icon />
+      </div>
     </div>
   </nav>
 </template>
