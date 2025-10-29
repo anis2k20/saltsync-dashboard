@@ -10,7 +10,7 @@ import { ref } from 'vue'
 const toast = useToast()
 const emit = defineEmits(['add-new-connection'])
 
-const code = '5564335'
+const code = 'EApVptt1jL3'
 const referralLink = ref(window.location.origin + window.location.pathname + '/' + code)
 function copyLink() {
   toast.success('Referral link copied to clipboard!')

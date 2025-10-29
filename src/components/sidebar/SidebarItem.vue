@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SidebarItem as SidebarItemType } from '@/components/sidebar/sidebar.data.ts'
 
-const props = defineProps<{
+defineProps<{
   item: SidebarItemType
   isOpen?: boolean
 }>()

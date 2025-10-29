@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'
+import { onMounted, watch } from 'vue'
 import Search from '@/components/ui/Search.vue'
 import Badge from '@/components/ui/Badge.vue'
 import Pagination from '@/components/ui/Pagination.vue'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CopyReferralLink from '@/components/referral/CopyReferralLink.vue'
 import { ref } from 'vue'
-import RewardPointCard from '@/components/referral/RewardPointCard.vue'
+import PointsBalanceCard from '@/components/referral/PointsBalanceCard.vue'
 import StateCard from '@/components/referral/StateCard.vue'
 import ReferralHistoryTable from '@/components/referral/ReferralHistoryTable.vue'
 import GlobalDrawer from '@/components/referral/GlobalDrawer.vue'
@@ -39,7 +39,7 @@ const isDrawerOpen = ref(false)
 
         <!--points balance card-->
         <div class="w-full space-y-4 md:space-y-6">
-          <RewardPointCard />
+          <PointsBalanceCard />
           <div class="grid grid-cols-2 gap-base md:gap-6">
             <StateCard v-for="stat in stats" :stat />
           </div>

@@ -50,7 +50,7 @@ function switchToDarkMode() {
         />
         <img
           v-if="!isDarkMode && isOpen"
-          src="@/assets/images/logo.svg"
+          src="@/assets/images/saltsync-logo-blue.webp"
           alt="logo"
           class="w-36 object-cover"
         />
