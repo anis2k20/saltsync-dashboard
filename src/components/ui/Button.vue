@@ -21,18 +21,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
 
-const base = 'cursor-pointer rounded-lg    border font-normal flex items-center justify-center'
-
-const variantClasses = computed(() => {
-  switch (props.variant) {
-    case 'secondary':
-      return 'bg-white border-white text-text-secondary-light'
-    case 'ghost':
-      return 'bg-transparent border-transparent text-text-secondary-light'
-    default:
-      return 'bg-white border-white text-text-secondary-light'
-  }
-})
+const base = 'cursor-pointer rounded-lg font-normal flex items-center justify-center'
 
 const sizeClasses = computed(() => {
   switch (props.size) {
@@ -55,7 +44,7 @@ function onClick(e: MouseEvent) {
 <template>
   <button
     :type="props.type"
-    :class="[base, variantClasses, sizeClasses, widthClass]"
+    :class="[base, sizeClasses, widthClass]"
     :disabled="props.disabled"
     @click="onClick"
   >

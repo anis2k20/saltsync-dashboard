@@ -13,6 +13,8 @@ const store = useReferralStore()
 const { list, meta, loading, error, search, status } = storeToRefs(store)
 const { fetchHistory, setPage } = store
 
+const emit = defineEmits<{ (e: 'add-referral'): void }>()
+
 function pageChange(page: number) {
   setPage(page)
   fetchHistory()
@@ -25,27 +27,34 @@ watch(status, () => fetchHistory())
 </script>
 
 <template>
-  <div class="rounded-lg border border-border-primary p-xl">
-    <h2 class="font-secondary text-2xl font-semibold text-primary-light">My Referral History</h2>
-    <div class="flex items-start gap-2 py-base">
-      <Search v-model="search" @search="fetchHistory" placeholder="Search" />
-      <div class="relative">
-        <select
-          v-model="status"
-          @change="fetchHistory"
-          class="relative z-10 h-10 cursor-pointer appearance-none rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray outline-none"
-        >
-          <option value="Success">Success</option>
-          <option value="Pending">Pending</option>
-          <option value="Rejected">Rejected</option>
-        </select>
-        <button
-          v-if="!status"
-          class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-2 bg-white text-fg-gray"
-        >
-          <circle-plus-icon /><span>Status</span>
-        </button>
+  <div class="space-y-2 rounded-lg border border-border-primary p-xl">
+    <div class="flex items-center justify-between">
+      <h2 class="font-secondary text-2xl font-semibold text-primary-light">My Referral History</h2>
+    </div>
+    <div class="flex flex-wrap items-center justify-between">
+      <div class="flex items-start gap-2 py-base">
+        <Search v-model="search" @search="fetchHistory" placeholder="Search" />
+        <div class="relative">
+          <select
+            v-model="status"
+            @change="fetchHistory"
+            class="relative z-10 h-10 cursor-pointer appearance-none rounded-md border border-dashed border-border-primary bg-transparent px-3 py-2 text-fg-gray outline-none"
+          >
+            <option value="Success">Success</option>
+            <option value="Pending">Pending</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+          <button
+            v-if="!status"
+            class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-2 bg-white text-fg-gray"
+          >
+            <circle-plus-icon /><span>Status</span>
+          </button>
+        </div>
       </div>
+      <Button @click="$emit('add-referral')" class="space-x-2 bg-bg-brand-primary text-brand-white">
+        <circle-plus-icon class="h-4 w-4" /> <span>Add Referral</span></Button
+      >
     </div>
     <!-- Referral history table -->
     <div

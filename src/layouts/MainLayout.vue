@@ -5,12 +5,12 @@ import Topbar from '@/components/topbar/Topbar.vue'
 
 <template>
   <div class="fixed inset-0 flex bg-bg-secondary_subtle font-primary">
-    <Sidebar />
+    <Sidebar class="hidden sm:block" />
     <!--page render container-->
-    <div class="flex-1 overflow-y-auto p-6">
-      <div class="rounded-2xl border border-border-primary bg-white">
+    <div class="flex-1 overflow-y-auto md:p-6">
+      <div class="border border-border-primary bg-white md:rounded-2xl">
         <Topbar />
-        <div class="p-8">
+        <div class="p-base md:p-8">
           <RouterView />
         </div>
       </div>

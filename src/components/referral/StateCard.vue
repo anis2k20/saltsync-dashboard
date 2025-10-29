@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div
-    class="relative flex h-[100px] flex-1 flex-col items-center justify-center overflow-hidden rounded-xl border border-border-primary bg-white px-lg py-base shadow"
+    class="relative flex flex-1 flex-col items-center justify-center overflow-hidden rounded-xl border border-border-primary bg-white px-base py-md shadow md:h-[100px] md:px-lg lg:py-base"
   >
     <img
       src="@/assets/images/gradient-small-1.svg"
@@ -23,14 +23,18 @@ defineProps({
     />
     <div class="relative z-10 flex w-full items-center gap-3">
       <div
-        class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#BBD1F4]"
+        class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#BBD1F4] md:h-12 md:w-12"
       >
-        <component :is="stat.icon" class="h-6 w-6" />
+        <component :is="stat.icon" class="h-5 w-5 md:h-6 md:w-6" />
       </div>
       <div class="w-full space-y-2 text-text-quaternary-light">
-        <p class="text-md font-secondary font-semibold">{{ stat.label }}</p>
+        <p class="md:text-md font-secondary text-xs font-semibold">{{ stat.label }}</p>
 
-        <h3 class="font-secondary text-4xl font-semibold text-primary-light">{{ stat.count }}</h3>
+        <h3
+          class="font-secondary text-sm font-bold text-primary-light md:text-4xl md:font-semibold"
+        >
+          {{ stat.count }}
+        </h3>
       </div>
     </div>
   </div>

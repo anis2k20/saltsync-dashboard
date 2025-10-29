@@ -33,7 +33,7 @@ function validate() {
       :placeholder="props.placeholder"
       v-model="inputValue"
       @blur="validate"
-      class="mt-2 block w-full rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 outline-none sm:text-sm"
+      class="mt-2 block w-full rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 outline-none focus:border-brand-pirmary sm:text-sm"
     />
     <p v-if="isInvalid" class="mt-2 text-xs text-red-600">This field is required.</p>
   </div>

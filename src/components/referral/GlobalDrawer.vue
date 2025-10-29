@@ -93,40 +93,4 @@ const sizeClass = computed(() => {
 })
 </script>
 
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.3s ease;
-}
-.slide-enter-from {
-  transform: translateX(100%);
-}
-.slide-leave-to {
-  transform: translateX(100%);
-}
-
-/* Left drawer */
-.slide-enter-from.left {
-  transform: translateX(-100%);
-}
-.slide-leave-to.left {
-  transform: translateX(-100%);
-}
-
-/* Bottom drawer */
-.slide-enter-from.bottom {
-  transform: translateY(100%);
-}
-.slide-leave-to.bottom {
-  transform: translateY(100%);
-}
-</style>
+<style scoped></style>

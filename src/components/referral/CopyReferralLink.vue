@@ -20,7 +20,7 @@ function copyLink() {
 
 <template>
   <div
-    class="relative max-w-96 space-y-8 overflow-hidden rounded-2xl bg-bg-brand-primary p-3xl text-white"
+    class="relative max-w-96 space-y-6 overflow-hidden rounded-2xl bg-bg-brand-primary p-3xl text-white md:space-y-8"
   >
     <img
       src="../../assets/images/gradient-small-1.svg"
@@ -28,7 +28,7 @@ function copyLink() {
       class="absolute top-0 -left-10 h-40 blur-2xl"
     />
     <!--    title-->
-    <h2 class="relative z-10 text-3xl font-bold">
+    <h2 class="relative z-10 text-2xl font-bold md:text-3xl">
       Refried friend and Get ৳10 off. Get up to ৳600.
     </h2>
 
@@ -37,7 +37,9 @@ function copyLink() {
       <h6 class="pb-1 text-sm">Your referral invite link</h6>
       <div class="flex gap-2">
         <Search v-model="referralLink" class="w-full placeholder:text-white" />
-        <Button @click="copyLink"><copy-icon class="mr-2" />Copy</Button>
+        <Button class="border border-white bg-white text-text-secondary-light" @click="copyLink"
+          ><copy-icon class="mr-2" />Copy</Button
+        >
       </div>
       <div class="flex items-start justify-between pt-3">
         <div>
@@ -61,7 +63,10 @@ function copyLink() {
     </div>
 
     <!--action button-->
-    <Button type="button" @click="emit('add-new-connection')" class="w-full"
+    <Button
+      type="button"
+      @click="emit('add-new-connection')"
+      class="w-full bg-white text-text-secondary-light"
       >Request for New Connection</Button
     >
   </div>
