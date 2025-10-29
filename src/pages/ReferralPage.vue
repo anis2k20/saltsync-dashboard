@@ -32,7 +32,7 @@ const isDrawerOpen = ref(false)
 <template>
   <div>
     <!--main container-->
-    <div class="space-y-6">
+    <div class="space-y-6 pb-24 md:pb-0">
       <div class="flex flex-wrap items-start gap-6 md:flex-nowrap">
         <!--copy referral link-->
         <CopyReferralLink />

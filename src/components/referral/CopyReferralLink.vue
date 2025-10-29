@@ -34,11 +34,11 @@ function copyLink() {
     <!--content-->
     <div class="relative z-10">
       <h6 class="pb-1 text-sm">Your referral invite link</h6>
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <input
           type="text"
           :value="referralLink"
-          class="rounded-lg border border-border-primary pl-2 outline-none placeholder:text-white"
+          class="h-10 rounded-lg border border-border-primary pl-2 outline-none placeholder:text-white"
         />
         <Button class="border border-white bg-white text-text-secondary-light" @click="copyLink"
           ><copy-icon class="mr-2" />Copy</Button

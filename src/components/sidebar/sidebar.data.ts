@@ -18,7 +18,7 @@ export const sidebarItems: SidebarItem[] = [
   {
     title: 'Main',
     children: [
-      { name: 'Home', path: '/home', icon: homeIcon, count: null },
+      { name: 'Home', path: '/dashboard', icon: homeIcon, count: null },
       { name: 'Offer', path: '/offer', icon: homeIcon, count: null },
       { name: 'Package', path: '/package', icon: packageIcon, count: null },
       { name: 'Activity', path: '/activity', icon: packageIcon, count: null },

@@ -22,7 +22,9 @@ import MobileBaottomNav from '@/components/bottom-nav/MobileBaottomNav.vue'
     </div>
     <!--end page render container-->
     <!--mobile bottom nav-->
-    <MobileBaottomNav />
+    <div class="fixed bottom-0 z-40">
+      <MobileBaottomNav />
+    </div>
   </div>
 </template>
 
