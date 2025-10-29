@@ -8,6 +8,7 @@ import { useReferralStore } from '@/stores/referral.store'
 import CirclePlusIcon from '@/components/icons/circle-plus-icon.vue'
 import Button from '@/components/ui/Button.vue'
 import Loader from '@/components/ui/Loader.vue'
+import NotFound from '@/components/ui/NotFound.vue'
 
 const store = useReferralStore()
 const { list, meta, loading, error, search, status } = storeToRefs(store)
@@ -92,7 +93,9 @@ watch(status, () => fetchHistory())
         </tbody>
         <tbody v-else-if="list.length === 0">
           <tr>
-            <td colspan="7" class="py-4 text-center">No referrals found.</td>
+            <td colspan="7" class="py-4 text-center">
+              <NotFound />
+            </td>
           </tr>
         </tbody>
         <tbody v-else>

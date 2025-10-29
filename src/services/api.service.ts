@@ -41,7 +41,7 @@ export const api = {
       items = items.filter(
         (r) =>
           r.name.toLowerCase().includes(s) ||
-          r.email.toLowerCase().includes(s) ||
+          (r.email || '').toLowerCase().includes(s) ||
           (r.phone || '').includes(s),
       )
     }
@@ -56,7 +56,7 @@ export const api = {
 
   async postManual(payload: PostReferralDTO) {
     await delay()
-    const exists = referrals.some((r) => r.email.toLowerCase() === payload.email.toLowerCase())
+    const exists = referrals.some((r) => r.email?.toLowerCase() === payload.email.toLowerCase())
     if (exists) {
       const err: any = new Error('Duplicate email')
       err.status = 409
@@ -67,8 +67,11 @@ export const api = {
       name: payload.name,
       email: payload.email,
       phone: payload.phone ?? null,
-      status: 'pending',
+      status: 'Pending',
       referredAt: new Date().toISOString(),
+      date: new Date().toISOString(),
+      discount: null,
+      point: null,
     }
     referrals.unshift(newReferral)
 

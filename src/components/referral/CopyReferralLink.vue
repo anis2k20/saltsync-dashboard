@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Search from '@/components/ui/Search.vue'
 import Button from '@/components/ui/Button.vue'
 import MailIcon from '@/components/icons/mail-icon.vue'
 import FacebookIcon from '@/components/icons/facebook-icon.vue'
@@ -7,7 +6,6 @@ import WhatsappIcon from '@/components/icons/whatsapp-icon.vue'
 import CopyIcon from '@/components/icons/copy-icon.vue'
 import { useToast } from 'vue-toastification'
 import { ref } from 'vue'
-import InputField from '@/components/ui/InputField.vue'
 
 const toast = useToast()
 const emit = defineEmits(['add-new-connection'])

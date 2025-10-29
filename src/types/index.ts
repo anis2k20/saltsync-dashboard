@@ -1,11 +1,14 @@
-export type ReferralStatus = 'pending' | 'accepted' | 'declined'
+export type ReferralStatus = 'Success' | 'Pending' | 'Rejected'
 export interface Referral {
   id: number
+  date: string
   name: string
-  email: string
   phone: string | null
+  email: string | null
   status: ReferralStatus
-  referredAt: string // ISO
+  discount: number | null
+  point: number | null
+  referredAt: string | null
 }
 export interface Points {
   current: number
