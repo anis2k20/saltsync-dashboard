@@ -28,7 +28,7 @@ defineProps({
         <component :is="stat.icon" class="h-5 w-5 md:h-6 md:w-6" />
       </div>
       <div class="w-full space-y-2 text-text-quaternary-light">
-        <p class="md:text-md font-secondary text-xs font-semibold dark:text-text-secondary-dark">
+        <p class="font-secondary text-xs font-semibold md:text-base dark:text-text-secondary-dark">
           {{ stat.label }}
         </p>
 

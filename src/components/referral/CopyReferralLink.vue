@@ -20,7 +20,7 @@ function copyLink() {
 
 <template>
   <div
-    class="relative max-w-96 space-y-6 overflow-hidden rounded-2xl bg-bg-brand-primary p-3xl text-white md:space-y-8 dark:bg-primary-light"
+    class="relative max-w-96 space-y-6 overflow-hidden rounded-2xl bg-bg-brand-primary p-lg text-white md:space-y-8 md:p-3xl dark:bg-primary-light"
   >
     <img
       src="../../assets/images/gradient-small-1.svg"
@@ -35,14 +35,14 @@ function copyLink() {
     <!--content-->
     <div class="relative z-10">
       <h6 class="pb-1 text-sm">Your referral invite link</h6>
-      <div class="flex flex-wrap gap-2 lg:flex-nowrap">
+      <div class="flex flex-wrap justify-between gap-2 lg:flex-nowrap">
         <input
           type="text"
           :value="code"
-          class="pointer-events-none h-10 rounded-lg border border-border-primary pl-2 outline-none placeholder:text-white"
+          class="pointer-events-none h-10 flex-1 rounded-lg border border-border-primary pl-2 outline-none placeholder:text-white"
         />
         <Button class="border border-white bg-white text-text-secondary-light" @click="copyLink"
-          ><copy-icon class="mr-2" />Copy</Button
+          ><copy-icon class="mr-1 md:mr-2" />Copy</Button
         >
       </div>
       <div class="flex items-start justify-between pt-3">
