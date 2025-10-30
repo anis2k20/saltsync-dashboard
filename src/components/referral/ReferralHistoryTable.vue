@@ -9,6 +9,10 @@ import CirclePlusIcon from '@/components/icons/circle-plus-icon.vue'
 import Button from '@/components/ui/Button.vue'
 import Loader from '@/components/ui/Loader.vue'
 import NotFound from '@/components/ui/NotFound.vue'
+import RectPlusIcon from '@/components/icons/rect-plus-icon.vue'
+import SearchIcon from '@/components/icons/search-icon.vue'
+import FilterIcon from '@/components/icons/filter-icon.vue'
+import PlusIcon from '@/components/icons/plus-icon.vue'
 
 const store = useReferralStore()
 const { list, meta, loading, error, search, status } = storeToRefs(store)
@@ -34,9 +38,7 @@ watch(status, () => fetchHistory())
 </script>
 
 <template>
-  <div
-    class="space-y-2 rounded-lg border border-border-primary p-xl dark:border-border-primary-dark"
-  >
+  <div class="c hidden space-y-2 rounded-lg border border-border-primary p-xl lg:block">
     <div class="flex items-center justify-between">
       <h2
         class="font-secondary text-2xl font-semibold text-primary-light dark:text-text-primary-dark"
@@ -71,7 +73,7 @@ watch(status, () => fetchHistory())
     </div>
     <!-- Referral history table -->
     <div
-      class="overflow-hidden overflow-x-auto rounded-2xl border border-border-secondary dark:border-border-primary-dark"
+      class="hidden overflow-hidden overflow-x-auto rounded-2xl border border-border-secondary lg:block dark:border-border-primary-dark"
     >
       <table class="w-full">
         <thead>
@@ -118,6 +120,75 @@ watch(status, () => fetchHistory())
       </table>
       <div v-if="!loading && !error && meta.total > 0">
         <Pagination :model-value="{ meta }" @page-change="pageChange" />
+      </div>
+    </div>
+  </div>
+
+  <!--for smaller device-->
+  <div class="space-y-4 lg:hidden">
+    <div class="flex items-center justify-between">
+      <h2
+        class="font-secondary text-2xl font-semibold text-primary-light dark:text-text-primary-dark"
+      >
+        My Referral History
+      </h2>
+      <div class="flex items-center gap-2">
+        <div
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#CBD5E1] dark:border-border-primary-dark"
+        >
+          <search-icon class="h-5 w-5 text-gray-600" />
+        </div>
+        <div
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#CBD5E1] dark:border-border-primary-dark"
+        >
+          <filter-icon class="h-5 w-5 text-gray-600" />
+        </div>
+        <div
+          @click="$emit('add-referral')"
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#CBD5E1] dark:border-border-primary-dark"
+        >
+          <plus-icon class="h-5 w-5 text-gray-600" />
+        </div>
+      </div>
+    </div>
+    <div
+      class="overflow-hidden rounded-md border border-border-primary dark:border-border-primary-dark"
+    >
+      <div
+        class="flex items-center justify-between bg-bg-secondary-light px-3xl py-lg text-sm font-medium text-primary-light dark:bg-secondary-dark dark:text-text-primary-dark"
+      >
+        <span>Channel & Date</span>
+        <span class="w-[72px] text-center">Point</span>
+      </div>
+      <!--card-->
+      <div
+        v-for="user in list"
+        :key="user.id"
+        class="flex items-center justify-between border-t border-border-secondary px-4 py-3 text-sm font-medium text-primary-light dark:border-border-primary-dark"
+      >
+        <div class="flex items-start gap-3">
+          <span>
+            <rect-plus-icon class="h-4 w-4 text-[#CBD5E1] dark:text-border-primary-dark" />
+          </span>
+          <div>
+            <h6
+              class="pt-0 text-sm leading-none font-medium text-primary-light dark:text-text-primary-dark"
+            >
+              {{ user.name }}
+            </h6>
+            <span
+              class="font-secondary text-xs font-medium text-[#475569] dark:text-text-placeholdder-dark"
+              >{{ formatDate(user.date) }}</span
+            >
+          </div>
+        </div>
+        <span class="w-20 text-center dark:text-text-primary-dark">{{ user.point ?? 'N/A' }}</span>
+      </div>
+      <div
+        v-if="!loading && !error && meta.total > 0"
+        class="border-t border-border-secondary dark:border-border-primary-dark"
+      >
+        <Pagination :max-visible-pages="3" :model-value="{ meta }" @page-change="pageChange" />
       </div>
     </div>
   </div>

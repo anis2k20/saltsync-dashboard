@@ -28,12 +28,12 @@ defineProps({
         <component :is="stat.icon" class="h-5 w-5 md:h-6 md:w-6" />
       </div>
       <div class="w-full space-y-2 text-text-quaternary-light">
-        <p class="font-secondary text-xs font-semibold md:text-base dark:text-text-secondary-dark">
+        <p class="font-secondary text-xs font-semibold lg:text-base dark:text-text-secondary-dark">
           {{ stat.label }}
         </p>
 
         <h3
-          class="font-secondary text-sm font-bold text-primary-light md:text-4xl md:font-semibold dark:text-text-primary-dark"
+          class="font-secondary text-sm font-bold text-primary-light md:font-semibold lg:text-4xl dark:text-text-primary-dark"
         >
           {{ stat.count }}
         </h3>
