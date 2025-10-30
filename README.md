@@ -60,3 +60,5 @@ VITE_USE_REAL_API=false
 ```
 
 Note: When `VITE_USE_REAL_API=true`, the real API calls are not yet implemented and will throw an error. Update the API service in `src/services/api.service.ts` to integrate with your actual backend.
+
+Live Preview: https://saltsync.anis-web.me/referrals
