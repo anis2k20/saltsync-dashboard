@@ -21,7 +21,7 @@ defineProps<{
     <router-link
       :to="item.path ?? '#'"
       v-if="item.name"
-      class="flex cursor-pointer items-center justify-between rounded-lg border border-transparent p-2 text-fg-gray hover:bg-gray-100 dark:text-text-primary-dark dark:hover:bg-gray-800"
+      class="flex cursor-pointer items-center justify-between rounded-lg border border-transparent p-2 text-fg-gray hover:bg-white dark:text-text-primary-dark dark:hover:bg-gray-800"
       exact-active-class="bg-red-400 bg-gradient-to-r min-w-10  border border-[#6C9BE8] from-[#143A7A] to-[#0F172A] text-white"
     >
       <div class="flex items-center gap-2">
