@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useIcons } from '@/components/sidebar/icons/useIcons.ts'
+import MobileNav from '@/components/bottom-nav/mobile-nav.vue'
 
 const { HomeIcon, AccountingIcon, ShareIcon, AccountIcon } = useIcons()
 
@@ -40,10 +41,8 @@ const menus: Menu[] = [
 
 <template>
   <nav class="fixed bottom-0 z-40 w-full sm:hidden">
-    <img
-      src="@/assets/images/mobile-nav.svg"
-      alt="nav-bg"
-      class="fixed bottom-0 block h-20 w-full object-cover object-top drop-shadow-[0_4px_16px_var(--alphalight300)] filter"
+    <mobile-nav
+      class="fixed -bottom-2 w-full text-white drop-shadow-[0_4px_16px_var(--alphalight300)] filter dark:text-primary-light"
     />
     <div
       class="fixed bottom-14 left-1/2 z-40 flex h-14 w-14 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full bg-white p-1.5 shadow-[0_8px_20px_0_#005D5D3D]"
@@ -54,13 +53,13 @@ const menus: Menu[] = [
         class="relative h-full w-full rounded-full"
       />
     </div>
-    <div class="relative z-50 flex justify-around px-2 pb-base text-fg-gray">
+    <div class="relative z-50 flex justify-around px-2 pb-base text-fg-gray dark:text-brand-white">
       <router-link
         :to="menu.link"
         v-for="(menu, index) in menus"
         class="flex flex-col items-center gap-1 text-sm"
         :class="index === 2 ? 'pl-[20%]' : ''"
-        exact-active-class="text-blue-500 "
+        exact-active-class="text-blue-500  "
       >
         <component :is="menu.icon" class="h-5 w-5" />
         {{ menu.label }}
