@@ -38,7 +38,7 @@ watch(status, () => fetchHistory())
 </script>
 
 <template>
-  <div class="c hidden space-y-2 rounded-lg border border-border-primary p-xl lg:block">
+  <div class="hidden space-y-2 rounded-lg border border-border-primary dark:border-border-primary-dark p-xl lg:block">
     <div class="flex items-center justify-between">
       <h2
         class="font-secondary text-2xl font-semibold text-primary-light dark:text-text-primary-dark"
@@ -72,8 +72,9 @@ watch(status, () => fetchHistory())
       >
     </div>
     <!-- Referral history table -->
+    <div class="overflow-hidden rounded-2xl border border-border-secondary  dark:border-border-primary-dark">
     <div
-      class="hidden overflow-hidden overflow-x-auto rounded-2xl border border-border-secondary lg:block dark:border-border-primary-dark"
+      class="hidden overflow-auto custom-scrollbar lg:block pb-2"
     >
       <table class="w-full">
         <thead>
@@ -118,7 +119,8 @@ watch(status, () => fetchHistory())
           </tr>
         </tbody>
       </table>
-      <div v-if="!loading && !error && meta.total > 0">
+    </div>
+     <div v-if="!loading && !error && meta.total > 0">
         <Pagination :model-value="{ meta }" @page-change="pageChange" />
       </div>
     </div>
